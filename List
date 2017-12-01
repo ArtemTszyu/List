@@ -1,3 +1,4 @@
+// Example program
 #include <iostream>
 #include <string>
 
@@ -33,22 +34,30 @@ void subt(node_t * & head) {
 
 void print(node_t * & head, int value) {
     node_t * x = head;
-    while (head!=NULL){
+    while (x!=NULL){
         cout<<"+---+"<<endl;
-        cout<<"| "<<x->value<<" |"<<endl;
-        cout<<"+---+"<<endl;
+        cout<<"| "<<x->value<<" |"<<"--->"<<endl;
+        cout<<"+---+";
         x=x->next;
     }
 }
 
 int main(int argc, char** argv) {
    int p=0, ch;
-    node_t *head=nullptr;
+    node_t * head=nullptr;
     print(head,p);
     char op;
     while((cin>>op)&&(op!='q')){
-    if (op=='+') {cin>>ch; add(head,ch);p++;}
-    else if (op=='-'){subt(head);p++;}
-    print(head,p);}
+        if (op=='+') {
+            cin>>ch;
+            add(head,ch);
+            p++;
+            }
+        else if (op=='-'){ 
+            subt(head);
+            p++;
+            }
+    print(head,p);
+    }
     return 0;
 }
