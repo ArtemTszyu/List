@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct node_t {
+  int value;
+  node_t * next;
+};
+
+void add(node_t * & head, int value) {
+  node_t * node = new node_t;
+  node->value = value;
+  node->next = nullptr;
+  if( head == nullptr) {
+      head = node;
+  }
+  else {
+      node_t * last = head;
+      while(last->next) {
+          last = last->next;
+      }
+      last->next = node;
+  }
+}
+
+void subt(node_t * & head) {
+    node_t*x=head;
+    head=x->next;
+    delete x;
+    
+}
+
+void print(node_t * & head, int value) {
+    node_t * x = head;
+    while (head!=NULL){
+        cout<<"+---+"<<endl;
+        cout<<"| "<<x->value<<" |"<<endl;
+        cout<<"+---+"<<endl;
+        x=x->next;
+    }
+}
+
+int main(int argc, char** argv) {
+   int p=0, ch;
+    node_t *head=nullptr;
+    print(head,p);
+    char op;
+    while((cin>>op)&&(op!='q')){
+    if (op=='+') {cin>>ch; add(head,ch);p++;}
+    else if (op=='-'){subt(head);p++;}
+    print(head,p);}
+    return 0;
+}
